@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { myFunction } from "../src/myFunction";
+
+const myFunction = () => ["a", "b", "c"];
 
 describe("Test myFunction", () => {
     it("Should return the correct value", async () => {

@@ -1,6 +1,6 @@
 {
     "name": "easy-lucia",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "#{DESC}#",
     "repository": {
         "type": "git",
@@ -8,7 +8,9 @@
     },
     "scripts": {
         "typecheck": "tsc --noEmit",
-        "build": "tsc",
+        "build": "pnpm build:cjs && pnpm build:esm",
+        "build:cjs": "tsc",
+        "build:esm": "rm -rf dist/esm && tsc -p tsconfig.esm.json",
         "test": "vitest",
         "lint:check": "eslint . --ext .ts,.tsx",
         "lint": "npm run lint:check -- --fix",
@@ -34,7 +36,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged -v"
+            "pre-commit": "false && lint-staged -v"
         }
     },
     "author": "u/JeromeBu",
