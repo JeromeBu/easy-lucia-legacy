@@ -1,12 +1,13 @@
 {
-    "name": "#{REPO_NAME}#",
+    "name": "easy-lucia",
     "version": "0.0.0",
     "description": "#{DESC}#",
     "repository": {
         "type": "git",
-        "url": "git://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#.git"
+        "url": "git://github.com/JeromeBu/easy-lucia.git"
     },
     "scripts": {
+        "typecheck": "tsc --noEmit",
         "build": "tsc",
         "test": "vitest",
         "lint:check": "eslint . --ext .ts,.tsx",
@@ -36,7 +37,7 @@
             "pre-commit": "lint-staged -v"
         }
     },
-    "author": "u/#{USER_OR_ORG}#",
+    "author": "u/JeromeBu",
     "license": "MIT",
     "files": [
         "src/",
@@ -44,10 +45,11 @@
         "!dist/tsconfig.tsbuildinfo"
     ],
     "keywords": [],
-    "homepage": "https://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#",
+    "homepage": "https://github.com/JeromeBu/easy-lucia",
     "devDependencies": {
         "@types/node": "^20.2.1",
-        "typescript": "^5.4.5",
+        "@types/pg": "^8.11.6",
+        "@types/react": "^18.3.3",
         "@typescript-eslint/eslint-plugin": "^5.59.6",
         "@typescript-eslint/parser": "^5.59.6",
         "eslint": "^8.41.0",
@@ -55,12 +57,17 @@
         "husky": "^4.3.8",
         "lint-staged": "^11.1.1",
         "prettier": "^3.3.2",
-        "vitest": "^1.6.0",
-        "tsx": "^4.15.5",
         "react": "^18.3.1",
-        "@types/react": "^18.3.3"
+        "tsx": "^4.15.5",
+        "typescript": "^5.4.5",
+        "vitest": "^1.6.0"
     },
     "publishConfig": {
         "access": "public"
+    },
+    "dependencies": {
+        "@lucia-auth/adapter-postgresql": "^3.1.2",
+        "lucia": "^3.2.0",
+        "oslo": "^1.2.1"
     }
 }

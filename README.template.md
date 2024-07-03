@@ -5,41 +5,41 @@
     <i>#{DESC}#</i>
     <br>
     <br>
-    <a href="https://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#/actions">
-      <img src="https://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#/actions/workflows/ci.yaml/badge.svg?branch=main">
+    <a href="https://github.com/JeromeBu/easy-lucia/actions">
+      <img src="https://github.com/JeromeBu/easy-lucia/actions/workflows/ci.yaml/badge.svg?branch=main">
     </a>
-    <a href="https://bundlephobia.com/package/#{REPO_NAME}#">
-      <img src="https://img.shields.io/bundlephobia/minzip/#{REPO_NAME}#">
+    <a href="https://bundlephobia.com/package/easy-lucia">
+      <img src="https://img.shields.io/bundlephobia/minzip/easy-lucia">
     </a>
-    <a href="https://www.npmjs.com/package/#{REPO_NAME}#">
-      <img src="https://img.shields.io/npm/dw/#{REPO_NAME}#">
+    <a href="https://www.npmjs.com/package/easy-lucia">
+      <img src="https://img.shields.io/npm/dw/easy-lucia">
     </a>
-    <a href="https://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#/blob/main/LICENSE">
-      <img src="https://img.shields.io/npm/l/#{REPO_NAME}#">
+    <a href="https://github.com/JeromeBu/easy-lucia/blob/main/LICENSE">
+      <img src="https://img.shields.io/npm/l/easy-lucia">
     </a>
 </p>
 <p align="center">
-  <a href="https://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#">Home</a>
+  <a href="https://github.com/JeromeBu/easy-lucia">Home</a>
   -
-  <a href="https://github.com/#{USER_OR_ORG}#/#{REPO_NAME}#">Documentation</a>
+  <a href="https://github.com/JeromeBu/easy-lucia">Documentation</a>
 </p>
 
 # Install / Import
 
 ```bash
-$ npm install --save #{REPO_NAME}#
+$ npm install --save easy-lucia
 ```
 
 ```typescript
-import { myFunction, myObject, MyReactComponent } from "#{REPO_NAME}#";
+import { myFunction, myObject, MyReactComponent } from "easy-lucia";
 ```
 
 Specific imports, only import what you need:
 
 ```typescript
-import { myFunction } from "#{REPO_NAME}#/myFunction";
-import { myObject } from "#{REPO_NAME}#/myObject";
-import MyReactComponent from "#{REPO_NAME}#/MyReactComponent";
+import { myFunction } from "easy-lucia/myFunction";
+import { myObject } from "easy-lucia/myObject";
+import MyReactComponent from "easy-lucia/MyReactComponent";
 ```
 
 # Contributing
@@ -49,7 +49,7 @@ import MyReactComponent from "#{REPO_NAME}#/MyReactComponent";
 You have made some changes to the code and you want to test them
 in your app before submitting a pull request?
 
-Assuming `you/my-app` have `#{REPO_NAME}#` as a dependency.
+Assuming `you/my-app` have `easy-lucia` as a dependency.
 
 ```bash
 cd ~/github
@@ -58,8 +58,8 @@ cd my-app
 yarn
 
 cd ~/github
-git clone https://github.com/garronej/#{REPO_NAME}#
-cd #{REPO_NAME}#
+git clone https://github.com/garronej/easy-lucia
+cd easy-lucia
 yarn
 yarn build
 yarn link-in-app my-app
@@ -72,7 +72,7 @@ rm -rf node_modules/.cache
 yarn start # Or whatever my-app is using for starting the project
 ```
 
-You don't have to use `~/github` as reference path. Just make sure `my-app` and `#{REPO_NAME}#`
+You don't have to use `~/github` as reference path. Just make sure `my-app` and `easy-lucia`
 are in the same directory.
 
 > Note for the maintainer: You might run into issues if you do not list all your singleton dependencies in
