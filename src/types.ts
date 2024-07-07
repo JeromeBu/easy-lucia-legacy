@@ -3,15 +3,18 @@ import type { Lucia, User } from "lucia";
 export type EmailAndPassword = {
   email: string;
   password: string;
-}
+};
 
 export type Cookies = () => {
   get: (name: string) => { value: string } | undefined;
-  set: (name: string, value: string, attributes?: Record<string, any>) => void,
-}
+  set: (name: string, value: string, attributes?: Record<string, any>) => void;
+};
 
 export type AuthEmailSenders = {
-  sendVerificationCode: (params: { email: string; code: string }) => Promise<void>;
+  sendVerificationCode: (params: {
+    email: string;
+    code: string;
+  }) => Promise<void>;
   sendPasswordResetLink: (params: {
     email: string;
     verificationLink: string;
@@ -38,7 +41,10 @@ export type AuthRepository = {
   user: {
     insert: (params: UserWithPasswordHash) => Promise<void>;
     findByEmail: (email: string) => Promise<UserWithPasswordHash | undefined>;
-    markEmailVerified: (params: { userId: string; verifiedAt: Date }) => Promise<void>;
+    markEmailVerified: (params: {
+      userId: string;
+      verifiedAt: Date;
+    }) => Promise<void>;
     updatePasswordHash: (params: { userId: string } & WithPasswordHash) => Promise<void>;
   };
 

@@ -1,12 +1,9 @@
-import { User } from "lucia";
+import type { User } from "lucia";
 import { isWithinExpirationDate } from "oslo";
 
 import type { AuthDependencies, EmailVerification } from "../types";
 
-export const createVerifyEmail = ({
-  lucia,
-  authRepository,
-}: AuthDependencies) => {
+export const createVerifyEmail = ({ lucia, authRepository }: AuthDependencies) => {
   return async ({
     sessionId,
     candidateCode,
@@ -17,10 +14,9 @@ export const createVerifyEmail = ({
     const { user } = await lucia.validateSession(sessionId);
     if (!user) throw new Error("Unauthorized");
 
-    const emailVerification =
-      await authRepository.emailVerificationCode.getByUserId(
-        user.id,
-      );
+    const emailVerification = await authRepository.emailVerificationCode.getByUserId(
+      user.id,
+    );
     if (
       !isCodeValid({
         dbEmailVerification: emailVerification,
@@ -50,8 +46,7 @@ const isCodeValid = ({
   candidateCode: string;
   user: User;
 }): boolean => {
-  if (!dbEmailVerification || candidateCode !== dbEmailVerification.code)
-    return false;
+  if (!dbEmailVerification || candidateCode !== dbEmailVerification.code) return false;
 
   if (!isWithinExpirationDate(dbEmailVerification.expiresAt)) return false;
 

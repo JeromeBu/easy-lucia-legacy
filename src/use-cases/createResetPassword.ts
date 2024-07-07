@@ -1,15 +1,12 @@
-import { generateIdFromEntropySize, TimeSpan } from "lucia";
+import { TimeSpan, generateIdFromEntropySize } from "lucia";
 import { createDate } from "oslo";
 import { sha256 } from "oslo/crypto";
 import { encodeHex } from "oslo/encoding";
 
-
-
 import type { AuthDependencies } from "../types";
 
-
 export const createResetPassword =
-  ({  authRepository, emails, resetPasswordBaseUrl }: AuthDependencies) =>
+  ({ authRepository, emails, resetPasswordBaseUrl }: AuthDependencies) =>
   async ({ email }: { email: string }) => {
     const user = await authRepository.user.findByEmail(email);
     if (!user || !user.emailVerifiedAt) throw new Error("Invalid email");
@@ -19,10 +16,10 @@ export const createResetPassword =
     await authRepository.resetPasswordToken.insert({
       userId: user.id,
       tokenHash,
-      expiresAt: createDate(new TimeSpan(2, "h"))
+      expiresAt: createDate(new TimeSpan(2, "h")),
     });
     await emails.sendPasswordResetLink({
-        email: user.email,
-        verificationLink: `${resetPasswordBaseUrl}/${token}`,
-    })
+      email: user.email,
+      verificationLink: `${resetPasswordBaseUrl}/${token}`,
+    });
   };

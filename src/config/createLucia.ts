@@ -1,18 +1,17 @@
 import { NodePostgresAdapter } from "@lucia-auth/adapter-postgresql";
 import type { TableNames } from "@lucia-auth/adapter-postgresql/dist/base";
-import type { Pool } from "pg";
 import { Lucia } from "lucia";
+import type { Pool } from "pg";
 
-type AdapterParams = { mode: "in-memory" } | { mode: "pg", pool: Pool, tableNames: TableNames };
+type AdapterParams =
+  | { mode: "in-memory" }
+  | { mode: "pg"; pool: Pool; tableNames: TableNames };
 
 type CreateLuciaDependencies = {
   env: "production" | string;
 } & AdapterParams;
 
-export const createLucia = ({
-  env,
-  ...adapterParams
-}: CreateLuciaDependencies) => {
+export const createLucia = ({ env, ...adapterParams }: CreateLuciaDependencies) => {
   const adapter = getAdapter(adapterParams);
   return new Lucia(adapter, {
     sessionCookie: {
