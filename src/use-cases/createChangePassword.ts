@@ -3,8 +3,8 @@ import { sha256 } from "oslo/crypto";
 import { encodeHex } from "oslo/encoding";
 import { Argon2id } from "oslo/password";
 
-import type { AuthDependencies } from "../types";
 import { hashingParams } from "../config/createLucia";
+import type { AuthDependencies } from "../types";
 
 export const createChangePassword =
   ({ authRepository, lucia }: AuthDependencies) =>
@@ -19,8 +19,7 @@ export const createChangePassword =
     const tokenHash = encodeHex(
       await sha256(new TextEncoder().encode(resetPasswordToken)),
     );
-    const token =
-      await authRepository.resetPasswordToken.getByTokenHash(tokenHash);
+    const token = await authRepository.resetPasswordToken.getByTokenHash(tokenHash);
 
     if (token) {
       await authRepository.resetPasswordToken.deleteAllByTokenHash(tokenHash);

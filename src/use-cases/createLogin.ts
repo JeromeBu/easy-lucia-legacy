@@ -2,8 +2,8 @@ import { Argon2id } from "oslo/password";
 
 import type { EmailAndPassword } from "../types";
 
-import type { AuthDependencies } from "../types";
 import { hashingParams } from "../config/createLucia";
+import type { AuthDependencies } from "../types";
 
 export const createLogin =
   ({ lucia, authRepository }: AuthDependencies) =>

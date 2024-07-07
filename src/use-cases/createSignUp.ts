@@ -2,8 +2,8 @@ import { generateIdFromEntropySize } from "lucia";
 import { alphabet, generateRandomString } from "oslo/crypto";
 import { Argon2id } from "oslo/password";
 
-import type { AuthDependencies, EmailAndPassword } from "../types";
 import { hashingParams } from "../config/createLucia";
+import type { AuthDependencies, EmailAndPassword } from "../types";
 
 export const createSignUp =
   ({ lucia, authRepository, emails }: AuthDependencies) =>

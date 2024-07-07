@@ -1,8 +1,7 @@
-import type{ Lucia } from "lucia";
+import type { Lucia } from "lucia";
 
-
+import type { Cookies } from "../types";
 import { createValidateRequest } from "./createValidateRequest";
-import { Cookies } from "../types";
 
 export const createLogout = (lucia: Lucia) => {
   const validateRequest = createValidateRequest(lucia);
